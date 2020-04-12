@@ -15,11 +15,10 @@ function unsure(code, data, string = false) {
                 w = words[j];
                 if (w == "but")
                     b++;
-                if (w == "no")
-                    if (!b--)
-                        return j;
-                return words.length;
+                if (w == "no" && !b--)
+                    return j;
             }
+            return words.length;
         };
         if (word.match(/^um+$/))
             stacks[stack].push(word.match(/m+/)[0].length);
@@ -45,6 +44,8 @@ function unsure(code, data, string = false) {
             stacks[stack][stacks[stack].length - 1] ? buts.push(i) : i = jump();
         else if (word == "wait")
             stacks[stack][stacks[stack].length - 1] && (i = buts[buts.length - 1] || -1);
+        else if (word == "debug")
+            console.log(JSON.parse(JSON.stringify(stacks)));
         else if (word != "no")
             console.warn(word);
     }
