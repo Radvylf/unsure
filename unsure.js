@@ -1,5 +1,5 @@
 function unsure(code, data, string = false) {
-    var words = code.toLowerCase().replace(/[^a-z]+/, " ").trim().split(" ");
+    var words = code.toLowerCase().replace(/[^a-z]+/g, " ").trim().split(" ");
     var stacks = [[], []];
     var stack = 0;
     var buts = [];
